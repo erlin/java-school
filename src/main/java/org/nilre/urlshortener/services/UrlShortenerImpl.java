@@ -4,8 +4,6 @@ import org.nilre.urlshortener.data.IUrlRepository;
 import org.nilre.urlshortener.shorteners.ShortenerExecutor;
 import org.springframework.stereotype.Service;
 
-import java.util.Optional;
-
 @Service
 public class UrlShortenerImpl implements IUrlShortenerService {
 
@@ -20,8 +18,21 @@ public class UrlShortenerImpl implements IUrlShortenerService {
 
     @Override
     public String getShorterUrl(String url) {
-        return Optional.ofNullable(urlRepository.findShortUrl(url))
-                .orElse(urlRepository.saveShortUrl(url, shortenerExecutor.executeShorting(url)));
+        String value = url;
+        while (true) {
+            String shortCode = shortenerExecutor.executeShorting(value);
+            String originalUrl = urlRepository.findOriginalUrl(shortCode);
+            if (originalUrl == null) {
+                urlRepository.saveShortUrl(url, shortCode);
+                if (url.equals(urlRepository.findOriginalUrl(shortCode))) {
+                    return shortCode;
+                }
+            } if(url.equals(originalUrl)) {
+                return shortCode;
+            }
+
+            value = shortCode;
+        }
     }
 
     @Override

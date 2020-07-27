@@ -17,7 +17,7 @@ class IUrlShortenerServiceTest {
         String shorterGoogleUrl = shortenerService.getShorterUrl("www.google.com");
 
         assertEquals(5, shorterGoogleUrl.length());
-        assertEquals(0, shorterGoogleUrl.replaceAll("[aeiouAEIOU]", "").length());
+        assertEquals(0, shorterGoogleUrl.replaceAll("[a-zA-Z]", "").length());
 
         String shorterYahooUrl = shortenerService.getShorterUrl("espanol.yahoo.com");
 

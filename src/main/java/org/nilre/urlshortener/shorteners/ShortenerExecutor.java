@@ -1,12 +1,10 @@
 package org.nilre.urlshortener.shorteners;
 
+import org.nilre.urlshortener.shorteners.utils.ApplicationException;
+
 public class ShortenerExecutor {
 
     private IShortener firstShortener;
-
-    public IShortener getFirstShortener() {
-        return firstShortener;
-    }
 
     public void setFirstShortener(IShortener firstShortener) {
         this.firstShortener = firstShortener;
@@ -16,6 +14,6 @@ public class ShortenerExecutor {
         if (firstShortener != null) {
             return firstShortener.shortUrl(url);
         }
-        throw new RuntimeException("Bad initialization, there is a default shortener");
+        throw new ApplicationException("Bad initialization, there is a default shortener");
     }
 }
