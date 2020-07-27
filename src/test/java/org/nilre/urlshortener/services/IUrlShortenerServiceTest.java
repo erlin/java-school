@@ -57,11 +57,11 @@ class IUrlShortenerServiceTest {
     void basicLogicTest() {
         String googleUrl = "www.google.com";
 
-        String shorterGooglerUrl = shortenerService.getShorterUrl(googleUrl);
+        String shorterGoogleUrl = shortenerService.getShorterUrl(googleUrl);
 
-        String shorterGooglerUrl2 = shortenerService.getShorterUrl(googleUrl);
+        String shorterGoogleUrl2 = shortenerService.getShorterUrl(googleUrl);
 
-        assertEquals(shorterGooglerUrl, shorterGooglerUrl2);
+        assertEquals(shorterGoogleUrl, shorterGoogleUrl2);
     }
 
 }
