@@ -27,7 +27,9 @@ public class UrlShortenerImpl implements IUrlShortenerService {
                 if (url.equals(urlRepository.findOriginalUrl(shortCode))) {
                     return shortCode;
                 }
-            } if(url.equals(originalUrl)) {
+            }
+
+            if (url.equals(originalUrl)) {
                 return shortCode;
             }
 
