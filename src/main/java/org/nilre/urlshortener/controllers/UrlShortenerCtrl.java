@@ -1,7 +1,6 @@
 package org.nilre.urlshortener.controllers;
 
 import org.nilre.urlshortener.services.IUrlShortenerService;
-import org.nilre.urlshortener.shorteners.validation.Validator;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
