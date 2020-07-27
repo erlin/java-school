@@ -29,8 +29,4 @@ class IUrlShortenerServiceTest {
         assertEquals("wwwlgcm", shorterOtherUrl);
     }
 
-    @Test
-    void getConcurrentShorterUrlTest(){
-        
-    }
 }

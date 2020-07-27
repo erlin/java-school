@@ -1,6 +1,6 @@
 package org.nilre.urlshortener.shorteners;
 
-import org.nilre.urlshortener.shorteners.utils.ApplicationException;
+import org.nilre.urlshortener.error.ApplicationException;
 
 public class ShortenerExecutor {
 

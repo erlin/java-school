@@ -1,4 +1,4 @@
-package org.nilre.urlshortener.shorteners.utils;
+package org.nilre.urlshortener.error;
 
 public class ApplicationException extends RuntimeException {
     public ApplicationException(String message) {

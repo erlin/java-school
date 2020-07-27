@@ -6,6 +6,6 @@ import org.springframework.stereotype.Component;
 public class DefaultValidator implements IValidator {
     @Override
     public boolean validShortUrl(String shortUrl) {
-        return shortUrl.replaceAll("[b-zB-Z&&[^eiouEIOU]]", "").isEmpty();
+        return !shortUrl.isEmpty() && shortUrl.replaceAll("[b-zB-Z&&[^eiouEIOU]]", "").isEmpty();
     }
 }
