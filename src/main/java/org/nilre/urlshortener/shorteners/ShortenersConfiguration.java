@@ -1,14 +1,16 @@
 package org.nilre.urlshortener.shorteners;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 
 @Configuration
 public class ShortenersConfiguration {
 
-    @Autowired
     private IShortener[] shorteners;
+
+    public ShortenersConfiguration(IShortener[] shorteners) {
+        this.shorteners = shorteners;
+    }
 
     @Bean
     public ShortenerExecutor shortenerExecutor() {

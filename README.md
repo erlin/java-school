@@ -49,4 +49,7 @@ por esta solución.
 
 El paquete 'error' contiene la clase excepción incluida para el manejo de posibles errores identificados.
  
-El paquete 'services' contiene la 
+El paquete 'services' contiene la abstracción del servicio que encargado de haciendo uso de los algoritmos
+acortar las Urls, que será empleada en el controlador, así como su implementación.
+
+ 

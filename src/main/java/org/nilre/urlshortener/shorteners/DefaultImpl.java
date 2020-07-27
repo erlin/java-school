@@ -13,7 +13,7 @@ public class DefaultImpl extends IShortener {
     public String shortUrlInternal(String url) {
         String shortUrl = url.replaceAll("[^b-zB-Z&&[^eiouEIOU]]", "");
         if (shortUrl.isEmpty()) {
-            throw new ApplicationException("This url: " + url + " is not reducible by our algorithms");
+            throw new ApplicationException("Empty Url is not reducible");
         }
         return shortUrl;
     }

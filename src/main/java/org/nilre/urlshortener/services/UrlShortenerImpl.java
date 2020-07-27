@@ -1,7 +1,9 @@
 package org.nilre.urlshortener.services;
 
 import org.nilre.urlshortener.data.IUrlRepository;
+import org.nilre.urlshortener.error.ApplicationException;
 import org.nilre.urlshortener.shorteners.ShortenerExecutor;
+import org.nilre.urlshortener.shorteners.validation.Validator;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -11,9 +13,12 @@ public class UrlShortenerImpl implements IUrlShortenerService {
 
     private final IUrlRepository urlRepository;
 
-    public UrlShortenerImpl(ShortenerExecutor shortenerExecutor, IUrlRepository urlRepository) {
+    private final Validator validator;
+
+    public UrlShortenerImpl(ShortenerExecutor shortenerExecutor, IUrlRepository urlRepository, Validator validator) {
         this.shortenerExecutor = shortenerExecutor;
         this.urlRepository = urlRepository;
+        this.validator = validator;
     }
 
     @Override
@@ -39,6 +44,14 @@ public class UrlShortenerImpl implements IUrlShortenerService {
 
     @Override
     public String getOriginalUrl(String shortUrl) {
-        return urlRepository.findOriginalUrl(shortUrl);
+        if (validator.validShortUrl(shortUrl)) {
+            String originalUrl = urlRepository.findOriginalUrl(shortUrl);
+            if (originalUrl != null) {
+                return originalUrl;
+            }
+            throw new ApplicationException("That 'alias' is not associated with any original Url!!");
+        } else {
+            throw new ApplicationException("Invalid 'alias' format");
+        }
     }
 }
